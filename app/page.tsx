@@ -204,7 +204,6 @@ export default function Web3LandingPageWrapper() {
     <DynamicContextProvider
       settings={{
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || 'id',
-        initialConnectedChain: 'solana',
         walletConnectors: [SolanaWalletConnectors],
       }}
     >
