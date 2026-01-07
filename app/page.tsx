@@ -14,17 +14,63 @@ import {
   Coins, TrendingUp, Lock, Wallet 
 } from 'lucide-react';
 
-// --- DATA ---
 const TOKEN_DATA = [
-  { name: 'Public Sale', value: 85, color: '#f97316' },
+  { name: 'Public Sale', value: 80, color: '#f97316' },
   { name: 'Team', value: 10, color: '#fbbf24' },
-  { name: 'Marketing', value: 5, color: '#4b5563' },
+  { name: 'Marketing', value: 5, color: '#94a3b8' },
+  { name: 'Community', value: 5, color: '#B45309' },
 ];
 
 const ROADMAP = [
-  { phase: "Phase 1", title: "The Vault", items: ["Smart Contract Audit", "Fair Launch"], status: "Done" },
-  { phase: "Phase 2", title: "Money Bin", items: ["DEX Listing", "Staking Live"], status: "Active" },
-  { phase: "Phase 3", title: "Empire", items: ["Governance", "Multi-chain Bridge"], status: "Future" }
+  { 
+    phase: "Phase 1", 
+    title: "The Golden Vault", 
+    items: [
+      { label: "Token Genesis", desc: "Launch on Pump.fun with 100% fair distribution and no pre-allocation." },
+      { label: "Liquidity Burn", desc: "Permanent removal of LP tokens to ensure 100% rug-proof security." },
+      { label: "Community Infiltration", desc: "Launch official Telegram and X (Twitter) hubs for the inner circle." }
+    ], 
+    status: "Done" 
+  },
+  { 
+    phase: "Phase 2", 
+    title: "Filling the Money Bin", 
+    items: [
+      { label: "DEX Domination", desc: "Migrating to Raydium with strategic volume bot support for trending status." },
+      { label: "The Shilling Army", desc: "Collaborations with Top-tier Solana influencers and daily raiding contests." },
+      { label: "CEX Listings", desc: "Application and integration with Tier-2 centralized exchanges (MEXC/Gate.io)." }
+    ], 
+    status: "Active" 
+  },
+  { 
+    phase: "Phase 3", 
+    title: "Global Empire", 
+    items: [
+      { label: "Staking Protocol", desc: "Lock your $SMCD in the 'High Security Vault' to earn passive gold rewards." },
+      { label: "McDuck DAO", desc: "Governance portal where holders vote on treasury investments and buybacks." },
+      { label: "Reality Integration", desc: "Exclusive Scrooge merchandise store and real-world 'Gold Club' events." }
+    ], 
+    status: "Future" 
+  }
+];
+
+const FAQ_DATA = [
+  {
+    question: "Is the liquidity locked?",
+    answer: "Yes. 100% of the initial liquidity generated on Pump.fun is automatically burned. This ensures the protocol is rug-proof and the 'Money Bin' stays secure forever."
+  },
+  {
+    question: "What are the transaction taxes?",
+    answer: "0% Buy / 0% Sell. We believe in the free flow of gold. The growth of the ecosystem is driven by volume and community engagement, not by taxing holders."
+  },
+  {
+    question: "How do I earn staking rewards?",
+    answer: "Once Phase 3 is live, you can lock your $SMCD in the High-Security Vault. Rewards are distributed in $SMCD based on your share of the pool and the length of your lock-up period."
+  },
+  {
+    question: "Is this a community-owned project?",
+    answer: "Absolutely. With 80% of tokens in public circulation from day one, the power lies with the holders. Governance will transition to a DAO model in the final phase."
+  }
 ];
 
 function MainContent() {
@@ -68,14 +114,26 @@ function MainContent() {
       <div className="fixed inset-0 z-[-1] bg-cover bg-no-repeat" style={{ backgroundImage: "url('/scrooge-bg.jpg')", filter: "brightness(0.25) contrast(1.1)", backgroundPosition: "75% center" }} />
 
       <nav className="flex justify-between items-center p-6 border-b border-white/5 sticky top-0 bg-black/40 backdrop-blur-md z-50">
+        
+
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-xl flex items-center justify-center"><Coins size={20} /></div>
           <span className="text-2xl font-black italic text-orange-400 uppercase">McDuck</span>
         </div>
         <PriceTicker />
-        <div className="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-300">
-          <a href="#tokenomics" className="hover:text-orange-400">Economy</a>
-          <a href="#roadmap" className="hover:text-orange-400">Journey</a>
+        <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-300">
+          <a href="#tokenomics" className="hover:text-orange-400 transition-all">Economy</a>
+          <a href="#roadmap" className="hover:text-orange-400 transition-all">Journey</a>
+          <a href="#faq" className="hover:text-orange-400 transition-all">FAQ</a>
+          {/* WHITEPAPER LINK */}
+          <a 
+            href="/docs/whitepaper.pdf" 
+            target="_blank" 
+            className="flex items-center gap-1.5 text-orange-500 hover:text-orange-400 transition-all group"
+          >
+            Whitepaper 
+            <BookOpen size={14} className="group-hover:rotate-12 transition-transform" />
+          </a>
         </div>
         <DynamicWidget variant="dropdown" />
       </nav>
@@ -88,8 +146,11 @@ function MainContent() {
               <span className="flex h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
               Solana Native
             </div>
-            <h1 className="text-7xl md:text-8xl font-black mb-6 italic leading-none tracking-tighter uppercase">
-              Digital <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">Gold</span>
+            <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase">
+              DIGITAL <br/>
+              <span className="inline-block pr-4 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-600">
+                GOLD
+              </span>
             </h1>
             <p className="text-gray-400 max-w-md text-lg mb-10">Wealth distribution for the diamond-handed. Join the money bin.</p>
             
@@ -101,7 +162,7 @@ function MainContent() {
                 <div className="flex-1">
                   {!isLoggedIn ? (
                     <button onClick={() => setShowAuthFlow(true)} className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-2xl font-black uppercase italic transition-all">
-                      <Wallet size={18} /> Connect
+                      <Wallet size={18} /> Connect Wallet
                     </button>
                   ) : (
                     <div className="w-full flex items-center justify-center gap-2 text-emerald-400 font-bold bg-emerald-500/10 px-6 py-4 rounded-2xl border border-emerald-500/20">
@@ -120,7 +181,7 @@ function MainContent() {
                 </div>
                 
                 <button onClick={handleCopy} className="flex items-center gap-3 px-4 py-2 bg-orange-500/5 border border-orange-500/20 rounded-xl hover:bg-orange-500/10 transition-all">
-                  <span className="text-[10px] font-mono text-orange-400 uppercase">CA: {contractAddress.slice(0,6)}...{contractAddress.slice(-4)}</span>
+                  <span className="text-[10px] font-mono text-orange-400 uppercase">CA: {contractAddress}</span>
                   {copied ? <CheckCircle2 size={12} className="text-emerald-500" /> : <Layers size={12} className="text-orange-400" />}
                 </button>
               </div>
@@ -142,7 +203,29 @@ function MainContent() {
                 ))}
               </div>
               <div className="h-[250px]">
-                <ResponsiveContainer><PieChart><Pie data={TOKEN_DATA} innerRadius={60} outerRadius={100} paddingAngle={8} dataKey="value" stroke="none">{TOKEN_DATA.map((e, i) => <Cell key={i} fill={e.color} />)}</Pie><Tooltip contentStyle={{background:'#000', border:'none', borderRadius:'12px'}} /></PieChart></ResponsiveContainer>
+                <ResponsiveContainer><PieChart>
+                <Pie 
+                  data={TOKEN_DATA} 
+                  innerRadius={60} 
+                  outerRadius={100} 
+                  paddingAngle={8} 
+                  dataKey="value" 
+                  stroke="none"
+                  label={({ percent }) => 
+                    percent !== undefined ? `${(percent * 100).toFixed(0)}%` : ""
+                  }
+                  labelLine={false} 
+                >
+                  
+                  {TOKEN_DATA.map((entry, index) => (
+                    <Cell 
+                      key={index} 
+                      fill={entry.color} 
+                      style={{ outline: 'none' }} 
+                    />
+                  ))}
+                </Pie>
+                  </PieChart></ResponsiveContainer>
               </div>
             </div>
           </div>
@@ -167,22 +250,71 @@ function MainContent() {
 
         {/* ROADMAP */}
         <section id="roadmap" className="py-24">
-          <h2 className="text-5xl font-black italic uppercase text-center mb-16">The Journey</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {ROADMAP.map((step, i) => (
-              <div key={i} className="bg-white/[0.03] border border-white/10 p-8 rounded-3xl hover:bg-white/[0.06] transition-all">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${step.status === 'Done' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-orange-500/20 text-orange-400'}`}>
-                  {step.status === 'Done' ? <CheckCircle2 size={24} /> : <Rocket size={24} />}
-                </div>
-                <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.3em]">{step.phase}</p>
-                <h3 className="text-2xl font-bold italic mb-4">{step.title}</h3>
-                <ul className="space-y-3">{step.items.map(item => <li key={item} className="flex items-center gap-2 text-sm text-gray-400"><div className="w-1.5 h-1.5 bg-orange-500/40 rounded-full" />{item}</li>)}</ul>
+        <div className="text-center mb-16">
+          <h2 className="text-6xl font-black italic uppercase tracking-tighter">The Journey</h2>
+          <p className="text-gray-500 font-bold uppercase tracking-widest mt-2 text-xs">From Duckburg to the Moon</p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {ROADMAP.map((step, idx) => (
+            <div key={idx} className="relative bg-white/[0.02] border border-white/10 p-8 rounded-[2.5rem] hover:bg-white/[0.05] transition-all group overflow-hidden">
+              {/* Status Indicator Badge */}
+              <div className={`absolute top-6 right-8 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-tighter ${
+                step.status === 'Done' ? 'bg-emerald-500/20 text-emerald-400' : 
+                step.status === 'Active' ? 'bg-orange-500/20 text-orange-400 animate-pulse' : 'bg-white/5 text-white/30'
+              }`}>
+                {step.status}
+              </div>
+
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 shadow-2xl ${
+                step.status === 'Done' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 
+                'bg-orange-500/10 text-orange-400 border border-orange-500/20'
+              }`}>
+                {step.status === 'Done' ? <CheckCircle2 size={28} /> : <Rocket size={28} />}
+              </div>
+
+              <span className="text-orange-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-2">{step.phase}</span>
+              <h3 className="text-3xl font-black italic mb-8 group-hover:text-orange-400 transition-colors uppercase leading-none">{step.title}</h3>
+              
+              <div className="space-y-6">
+                {step.items.map((item, i) => (
+                  <div key={i} className="relative pl-4 border-l border-white/10 group/item">
+                    <div className="absolute -left-[1px] top-0 h-4 w-[2px] bg-orange-500 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                    <p className="text-sm font-black italic text-gray-200 uppercase tracking-tight mb-1">{item.label}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed font-medium">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      </main>
+
+      {/* 6. FAQ SECTION */}
+      <section id="faq" className="py-24 border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black italic uppercase tracking-tighter mb-4">Common Inquiries</h2>
+            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Everything you need to know about the vault</p>
+          </div>
+          
+          <div className="space-y-4">
+            {FAQ_DATA.map((item, i) => (
+              <div key={i} className="group bg-white/[0.02] border border-white/10 p-6 rounded-2xl hover:border-orange-500/30 transition-all">
+                <h4 className="text-lg font-bold italic text-orange-400 mb-2 uppercase tracking-tight flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                  {item.question}
+                </h4>
+                <p className="text-gray-400 text-sm leading-relaxed font-medium pl-3.5">
+                  {item.answer}
+                </p>
               </div>
             ))}
           </div>
-        </section>
-      </main>
-
+        </div>
+      </section>
+      
       <footer className="py-20 border-t border-white/5 text-center text-gray-500 text-xs uppercase font-bold tracking-widest">
         © 2026 Scrooge McDuck • Built on Solana
       </footer>
