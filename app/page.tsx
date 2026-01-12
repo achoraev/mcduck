@@ -13,82 +13,17 @@ import {
   Rocket, BookOpen, Layers, CheckCircle2, 
   Coins, TrendingUp, Lock, Wallet 
 } from 'lucide-react';
+import Link from 'next/link';
 
-const TOKEN_DATA = [
-  { name: 'Public Sale', value: 80, color: '#f97316' },
-  { name: 'Team', value: 10, color: '#fbbf24' },
-  { name: 'Marketing', value: 5, color: '#94a3b8' },
-  { name: 'Community', value: 5, color: '#B45309' },
-];
-
-const ROADMAP = [
-  { 
-    phase: "Phase 1", 
-    title: "The Golden Vault", 
-    items: [
-      { label: "Token Genesis", desc: "Launch on Pump.fun with 100% fair distribution and no pre-allocation." },
-      { label: "Liquidity Burn", desc: "Permanent removal of LP tokens to ensure 100% rug-proof security." },
-      { label: "Community Infiltration", desc: "Launch official Telegram and X (Twitter) hubs for the inner circle." }
-    ], 
-    status: "Done" 
-  },
-  { 
-    phase: "Phase 2", 
-    title: "Filling the Money Bin", 
-    items: [
-      { label: "DEX Domination", desc: "Migrating to Raydium with strategic volume bot support for trending status." },
-      { label: "The Shilling Army", desc: "Collaborations with Top-tier Solana influencers and daily raiding contests." },
-      { label: "CEX Listings", desc: "Application and integration with Tier-2 centralized exchanges (MEXC/Gate.io)." }
-    ], 
-    status: "Active" 
-  },
-  { 
-    phase: "Phase 3", 
-    title: "Global Empire", 
-    items: [
-      { label: "Staking Protocol", desc: "Lock your $SMCD in the 'High Security Vault' to earn passive gold rewards." },
-      { label: "McDuck DAO", desc: "Governance portal where holders vote on treasury investments and buybacks." },
-      { label: "Reality Integration", desc: "Exclusive Scrooge merchandise store and real-world 'Gold Club' events." }
-    ], 
-    status: "Future" 
-  }
-];
-
-const FAQ_DATA = [
-  {
-    question: "Is the liquidity locked?",
-    answer: "Yes. 100% of the initial liquidity generated on Pump.fun is automatically burned. This ensures the protocol is rug-proof and the 'Money Bin' stays secure forever."
-  },
-  {
-    question: "What are the transaction taxes?",
-    answer: "0% Buy / 0% Sell. We believe in the free flow of gold. The growth of the ecosystem is driven by volume and community engagement, not by taxing holders."
-  },
-  {
-    question: "How do I earn staking rewards?",
-    answer: "Once Phase 3 is live, you can lock your $SMCD in the High-Security Vault. Rewards are distributed in $SMCD based on your share of the pool and the length of your lock-up period."
-  },
-  {
-    question: "Is this a community-owned project?",
-    answer: "Absolutely. With 80% of tokens in public circulation from day one, the power lies with the holders. Governance will transition to a DAO model in the final phase."
-  }
-];
+import { useClipboard } from '@/hooks/useClipboard';
+import { CONTRACT_ADDRESS, TOKEN_DATA, FAQ_DATA, ROADMAP} from '@/lib/constants';
+import CountdownTimer from '@/components/CountdownTimer';
 
 function MainContent() {
   const isLoggedIn = useIsLoggedIn();
+  const { copied, copy } = useClipboard();
   const { setShowAuthFlow } = useDynamicContext();
-  const [copied, setCopied] = useState(false);
-  
-  const contractAddress = "FVVcwtS1qeh9PBqjKd2D1jgGkFfqoAX6SdaCepgZpump";
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(contractAddress);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy!', err);
-    }
-  };
+  const contractAddress = CONTRACT_ADDRESS;
 
   const PriceTicker = () => (
     <div className="hidden lg:flex items-center gap-6 px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md">
@@ -97,7 +32,7 @@ function MainContent() {
         <span className="text-sm font-mono font-bold text-orange-400">$0.00427</span>
         <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-1 rounded">+5.2%</span>
       </div>
-      <a href={`https://pump.fun/coin/${contractAddress}`} target="_blank" className="text-[10px] font-black text-orange-500 hover:text-orange-400 uppercase underline underline-offset-4">
+      <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="text-[10px] font-black text-orange-500 hover:text-orange-400 uppercase underline underline-offset-4">
         Trade Now →
       </a>
       <div className="w-[1px] h-4 bg-white/10" />
@@ -114,8 +49,6 @@ function MainContent() {
       <div className="fixed inset-0 z-[-1] bg-cover bg-no-repeat" style={{ backgroundImage: "url('/scrooge-bg.jpg')", filter: "brightness(0.25) contrast(1.1)", backgroundPosition: "75% center" }} />
 
       <nav className="flex justify-between items-center p-6 border-b border-white/5 sticky top-0 bg-black/40 backdrop-blur-md z-50">
-        
-
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-xl flex items-center justify-center"><Coins size={20} /></div>
           <span className="text-2xl font-black italic text-orange-400 uppercase">McDuck</span>
@@ -124,6 +57,8 @@ function MainContent() {
         <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-300">
           <a href="#tokenomics" className="hover:text-orange-400 transition-all">Economy</a>
           <a href="#roadmap" className="hover:text-orange-400 transition-all">Journey</a>
+          <a href="#nfts" className="hover:text-orange-400 transition-all">NFTs</a> 
+          <Link href="/merchandise" className="hover:text-orange-400 transition-all">Merch</Link>
           <a href="#faq" className="hover:text-orange-400 transition-all">FAQ</a>
           {/* WHITEPAPER LINK */}
           <a 
@@ -156,7 +91,7 @@ function MainContent() {
             
             <div className="flex flex-col gap-6 max-w-md">
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href={`https://pump.fun/coin/${contractAddress}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
+                <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
                   <TrendingUp size={18} className="group-hover:animate-bounce" /> Buy Now
                 </a>
                 <div className="flex-1">
@@ -180,8 +115,8 @@ function MainContent() {
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span className="text-orange-400">1,400+</span> Holders</span>
                 </div>
                 
-                <button onClick={handleCopy} className="flex items-center gap-3 px-4 py-2 bg-orange-500/5 border border-orange-500/20 rounded-xl hover:bg-orange-500/10 transition-all">
-                  <span className="text-[10px] font-mono text-orange-400 uppercase">CA: {contractAddress}</span>
+                <button onClick={() => copy(contractAddress)} className="flex items-center gap-3 px-4 py-2 bg-orange-500/5 border border-orange-500/20 rounded-xl hover:bg-orange-500/10 transition-all">
+                  <span className="text-[10px] font-mono text-orange-400 uppercase">CA: {CONTRACT_ADDRESS}</span>
                   {copied ? <CheckCircle2 size={12} className="text-emerald-500" /> : <Layers size={12} className="text-orange-400" />}
                 </button>
               </div>
@@ -290,7 +225,48 @@ function MainContent() {
         </div>
       </section>
       </main>
-
+      {isLoggedIn ? (
+        <section id="nfts" className="py-24 relative animate-in fade-in duration-700">
+          <div className="bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-12 backdrop-blur-xl overflow-hidden relative">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-[10px] font-black uppercase tracking-widest mb-6">
+                  Exclusive Collection
+                </div>
+                <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-6">
+                  The <span className="text-orange-500">Billionaires</span> Club
+                </h2>
+                <div className="space-y-4">
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">Vault Unlocks In:</p>
+                  <CountdownTimer targetDate="2026-03-01T00:00:00" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[1,2,3,4].map(i => (
+                  <div key={i} className="aspect-square bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center">
+                    <Coins className="text-orange-500/20" size={32} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : (
+        /* LOCKED PLACEHOLDER */
+        <section id="nfts" className="py-24 text-center">
+          <div className="max-w-xl mx-auto p-12 bg-white/[0.02] border border-dashed border-white/20 rounded-[2.5rem]">
+            <Lock size={48} className="mx-auto mb-6 text-gray-600" />
+            <h3 className="text-2xl font-black italic uppercase mb-4 text-gray-400">NFT Vault Locked</h3>
+            <p className="text-gray-500 text-sm mb-8">Connect your Solana wallet to view the upcoming Billionaires Club collection.</p>
+            <button 
+              onClick={() => setShowAuthFlow(true)} 
+              className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold uppercase text-xs transition-all"
+            >
+              Connect to Unlock
+            </button>
+          </div>
+        </section>
+      )}
       {/* 6. FAQ SECTION */}
       <section id="faq" className="py-24 border-t border-white/5">
         <div className="max-w-3xl mx-auto">
@@ -324,8 +300,6 @@ function MainContent() {
 
 export default function Web3LandingPageWrapper() {
   return (
-    <DynamicContextProvider settings={{ environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || 'id', walletConnectors: [SolanaWalletConnectors] }}>
       <MainContent />
-    </DynamicContextProvider>
   );
 }
