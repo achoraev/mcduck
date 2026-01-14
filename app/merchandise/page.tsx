@@ -8,9 +8,16 @@ import { useIsLoggedIn, useDynamicContext } from '@dynamic-labs/sdk-react-core';
 import CountdownTimer from '@/components/CountdownTimer';
 
 export default function MerchandisePage() {
-  const isLoggedIn = useIsLoggedIn();
-  const { setShowAuthFlow } = useDynamicContext();
+    const [isMounted, setIsMounted] = React.useState(false);
+    const isLoggedIn = useIsLoggedIn();
+    const { setShowAuthFlow } = useDynamicContext();
 
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return <div className="min-h-screen bg-black" />;
+  
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
       {/* Background Glow */}
