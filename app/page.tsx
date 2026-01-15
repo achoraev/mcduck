@@ -29,8 +29,9 @@ function MainContent() {
   const PriceTicker = () => (
     <div className="hidden lg:flex items-center gap-6 px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md">
       <div className="flex items-center gap-2">
-        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live $SMCD</span>
-        <span className="text-sm font-mono font-bold text-orange-400">$0.00427</span>
+        {/* <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live $SMCD</span> */}
+        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live</span>
+        <span className="text-sm font-mono font-bold text-orange-400">$0.000004</span>
         <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-1 rounded">+5.2%</span>
       </div>
       <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="text-[10px] font-black text-orange-500 hover:text-orange-400 uppercase underline underline-offset-4">
@@ -39,7 +40,7 @@ function MainContent() {
       <div className="w-[1px] h-4 bg-white/10" />
       <div className="flex items-center gap-2">
         <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">M-Cap</span>
-        <span className="text-sm font-mono font-bold text-white">$4.2M</span>
+        <span className="text-sm font-mono font-bold text-white">$5.0K</span>
       </div>
     </div>
   );
@@ -92,7 +93,8 @@ function MainContent() {
             
             <div className="flex flex-col gap-6 max-w-md">
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
+                {/* <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20"> */}
+                <a href={`https://pump.fun/coin/`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
                   <TrendingUp size={18} className="group-hover:animate-bounce" /> Buy Now
                 </a>
                 <div className="flex-1">
@@ -113,7 +115,7 @@ function MainContent() {
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map(i => <div key={i} className="w-6 h-6 rounded-full border-2 border-black bg-gray-800"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i+5}`} /></div>)}
                   </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span className="text-orange-400">1,400+</span> Holders</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span className="text-orange-400">1,00+</span> Holders</span>
                 </div>
                 
                 <button onClick={() => copy(contractAddress)} className="flex items-center gap-3 px-4 py-2 bg-orange-500/5 border border-orange-500/20 rounded-xl hover:bg-orange-500/10 transition-all">
@@ -171,7 +173,7 @@ function MainContent() {
               <div className="animate-in fade-in slide-in-from-bottom-4">
                 <TrendingUp size={48} className="mb-6" />
                 <h3 className="text-3xl font-black italic">YOUR VAULT</h3>
-                <div className="mt-10"><p className="text-white/60 text-xs font-bold uppercase mb-1">Balance</p><p className="text-5xl font-black italic tracking-tighter">1.2M <span className="text-xl">$SM</span></p></div>
+                <div className="mt-10"><p className="text-white/60 text-xs font-bold uppercase mb-1">Balance</p><p className="text-5xl font-black italic tracking-tighter">1.2M <span className="text-xl">$tokens</span></p></div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-full text-center">

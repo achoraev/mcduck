@@ -27,7 +27,7 @@ export default function MerchandisePage() {
         <div className="z-10 animate-in fade-in zoom-in-95 duration-500">
           <ShoppingBag size={60} className="text-orange-500 mb-6 mx-auto animate-bounce" />
           <h1 className="text-5xl font-black italic uppercase mb-4 tracking-tighter">Official <span className="text-orange-500">Merch</span></h1>
-          <p className="text-gray-400 max-w-sm mx-auto mb-10">Holders get 20% off all golden hoodies and caps.</p>
+          <p className="text-gray-400 max-w-sm mx-auto mb-10">Holders get 20% off all golden goods.</p>
           
           <div className="flex justify-center scale-110 md:scale-125 mb-16">
             <CountdownTimer targetDate="2026-04-15T00:00:00" />
@@ -37,7 +37,7 @@ export default function MerchandisePage() {
         <div className="z-10 max-w-md">
           <Lock size={60} className="text-gray-700 mx-auto mb-6" />
           <h1 className="text-4xl font-black italic uppercase mb-4">Store Access Denied</h1>
-          <p className="text-gray-500 mb-8 font-medium">The McDuck Merchandise store is exclusive to verified $SMCD holders.</p>
+          <p className="text-gray-500 mb-8 font-medium">The McDuck Merchandise store is exclusive to verified token holders.</p>
           <button 
             onClick={() => setShowAuthFlow(true)}
             className="flex items-center gap-3 px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-2xl font-black uppercase italic transition-all mx-auto shadow-lg shadow-orange-900/40"

@@ -1,6 +1,6 @@
 import { Rocket, CheckCircle2 } from 'lucide-react';
 
-export const CONTRACT_ADDRESS = "FVVcwtS1qeh9PBqjKd2D1jgGkFfqoAX6SdaCepgZpump";
+export const CONTRACT_ADDRESS = "Comming soon";
 
 export const TOKEN_DATA = [
   { name: 'Public Sale', value: 80, color: '#f97316' },
@@ -15,7 +15,7 @@ export const ROADMAP = [
       title: "The Golden Vault", 
       items: [
         { label: "Token Genesis", desc: "Launch on Pump.fun with 100% fair distribution and no pre-allocation." },
-        { label: "Liquidity Burn", desc: "Permanent removal of LP tokens to ensure 100% rug-proof security." },
+        { label: "Liquidity Locked", desc: "Permanent removal of LP tokens to ensure 100% rug-proof security." },
         { label: "Community Infiltration", desc: "Launch official Telegram and X (Twitter) hubs for the inner circle." }
       ], 
       status: "Done" 
@@ -45,7 +45,7 @@ export const ROADMAP = [
   export const FAQ_DATA = [
     {
       question: "Is the liquidity locked?",
-      answer: "Yes. 100% of the initial liquidity generated on Pump.fun is automatically burned. This ensures the protocol is rug-proof and the 'Money Bin' stays secure forever."
+      answer: "Yes. 100% of the initial liquidity generated on Pump.fun is automatically locked. This ensures the protocol is rug-proof and the 'Money Bin' stays secure forever."
     },
     {
       question: "What are the transaction taxes?",
