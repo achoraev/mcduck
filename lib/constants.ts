@@ -1,6 +1,7 @@
 import { Rocket, CheckCircle2 } from 'lucide-react';
 
-export const CONTRACT_ADDRESS = "Comming soon";
+export const CONTRACT_ADDRESS = "Comming soon"; // change when start
+export const SYMBOL = "SOL"; // change when start
 
 export const TOKEN_DATA = [
   { name: 'Public Sale', value: 80, color: '#f97316' },

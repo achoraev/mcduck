@@ -19,6 +19,8 @@ import Link from 'next/link';
 import { useClipboard } from '@/hooks/useClipboard';
 import { CONTRACT_ADDRESS, TOKEN_DATA, FAQ_DATA, ROADMAP} from '@/lib/constants';
 import CountdownTimer from '@/components/CountdownTimer';
+import Navbar from '@/components/Navbar';
+import WhalesAI from '@/components/WhalesAI';
 
 function MainContent() {
   const isLoggedIn = useIsLoggedIn();
@@ -26,55 +28,13 @@ function MainContent() {
   const { setShowAuthFlow } = useDynamicContext();
   const contractAddress = CONTRACT_ADDRESS;
 
-  const PriceTicker = () => (
-    <div className="hidden lg:flex items-center gap-6 px-4 py-1.5 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md">
-      <div className="flex items-center gap-2">
-        {/* <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live $SMCD</span> */}
-        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live</span>
-        <span className="text-sm font-mono font-bold text-orange-400">$0.000004</span>
-        <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-1 rounded">+5.2%</span>
-      </div>
-      <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="text-[10px] font-black text-orange-500 hover:text-orange-400 uppercase underline underline-offset-4">
-        Trade Now →
-      </a>
-      <div className="w-[1px] h-4 bg-white/10" />
-      <div className="flex items-center gap-2">
-        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">M-Cap</span>
-        <span className="text-sm font-mono font-bold text-white">$5.0K</span>
-      </div>
-    </div>
-  );
-
   return (
     <div className="relative min-h-screen text-white font-sans selection:bg-orange-500 overflow-x-hidden">
       {/* BACKGROUND */}
       <div className="fixed inset-0 z-[-1] bg-cover bg-no-repeat" style={{ backgroundImage: "url('/scrooge-bg.jpg')", filter: "brightness(0.25) contrast(1.1)", backgroundPosition: "75% center" }} />
 
-      <nav className="flex justify-between items-center p-6 border-b border-white/5 sticky top-0 bg-black/40 backdrop-blur-md z-50">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-xl flex items-center justify-center"><Coins size={20} /></div>
-          <span className="text-2xl font-black italic text-orange-400 uppercase">McDuck</span>
-        </div>
-        <PriceTicker />
-        <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-300">
-          <a href="#tokenomics" className="hover:text-orange-400 transition-all">Economy</a>
-          <a href="#roadmap" className="hover:text-orange-400 transition-all">Journey</a>
-          <a href="#nfts" className="hover:text-orange-400 transition-all">NFTs</a> 
-          <Link href="/merchandise" className="hover:text-orange-400 transition-all">Merch</Link>
-          <a href="#faq" className="hover:text-orange-400 transition-all">FAQ</a>
-          {/* WHITEPAPER LINK */}
-          <a 
-            href="/docs/whitepaper.pdf" 
-            target="_blank" 
-            className="flex items-center gap-1.5 text-orange-500 hover:text-orange-400 transition-all group"
-          >
-            Whitepaper 
-            <BookOpen size={14} className="group-hover:rotate-12 transition-transform" />
-          </a>
-        </div>
-        <DynamicWidget variant="dropdown" />
-      </nav>
-
+      <Navbar />
+    
       <main className="max-w-7xl mx-auto px-6">
         {/* HERO */}
         <header className="py-24 grid md:grid-cols-2 gap-12 min-h-[70vh] items-center">
@@ -114,7 +74,7 @@ function MainContent() {
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map(i => <div key={i} className="w-6 h-6 rounded-full border-2 border-black bg-gray-800"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i+5}`} /></div>)}
                   </div>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span className="text-orange-400">1,00+</span> Holders</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span className="text-orange-400">100+</span> Holders</span>
                 </div>
                 
                 <button onClick={() => copy(contractAddress)} className="flex items-center gap-3 px-4 py-2 bg-orange-500/5 border border-orange-500/20 rounded-xl hover:bg-orange-500/10 transition-all">
@@ -226,7 +186,9 @@ function MainContent() {
           ))}
         </div>
       </section>
+      <WhalesAI />
       </main>
+
       {isLoggedIn ? (
         <section id="nfts" className="py-24 relative animate-in fade-in duration-700">
           <div className="bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-12 backdrop-blur-xl overflow-hidden relative">
