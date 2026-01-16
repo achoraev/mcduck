@@ -93,8 +93,7 @@ function MainContent() {
             
             <div className="flex flex-col gap-6 max-w-md">
               <div className="flex flex-col sm:flex-row gap-4">
-                {/* <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20"> */}
-                <a href={`https://pump.fun/coin/`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
+                <a href={`https://pump.fun/coin/${CONTRACT_ADDRESS}`} target="_blank" className="flex-1 group relative flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-2xl font-black uppercase italic tracking-wider hover:scale-105 transition-all shadow-xl shadow-orange-900/20">
                   <TrendingUp size={18} className="group-hover:animate-bounce" /> Buy Now
                 </a>
                 <div className="flex-1">
