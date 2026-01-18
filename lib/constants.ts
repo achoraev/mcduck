@@ -4,10 +4,11 @@ export const CONTRACT_ADDRESS = "Comming soon"; // change when start
 export const SYMBOL = "SOL"; // change when start
 
 export const TOKEN_DATA = [
-  { name: 'Public Sale', value: 80, color: '#f97316' },
-  { name: 'Team', value: 10, color: '#fbbf24' },
-  { name: 'Marketing', value: 5, color: '#94a3b8' },
-  { name: 'Community', value: 5, color: '#B45309' },
+  { name: 'Public Liquidity', value: 80, color: '#f97316' },
+  { name: 'Marketing (Locked till Graduate)', value: 5, color: '#fbbf24' },
+  { name: 'Strategic Reserve (Locked till 1M MC)', value: 5, color: '#94a3b8' },
+  { name: 'Development', value: 5, color: '#B45309' },
+  { name: 'Community (Locked till Graduate)', value: 5, color: '#B45309' },
 ];
 
 export const ROADMAP = [

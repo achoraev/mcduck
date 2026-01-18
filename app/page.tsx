@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import React, { useState } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { 
   DynamicWidget, 
   DynamicContextProvider, 
@@ -21,6 +22,7 @@ import { CONTRACT_ADDRESS, TOKEN_DATA, FAQ_DATA, ROADMAP} from '@/lib/constants'
 import CountdownTimer from '@/components/CountdownTimer';
 import Navbar from '@/components/Navbar';
 import WhalesAI from '@/components/WhalesAI';
+import NFTVault from '@/components/NFTVault';
 
 function MainContent() {
   const isLoggedIn = useIsLoggedIn();
@@ -187,50 +189,9 @@ function MainContent() {
         </div>
       </section>
       <WhalesAI />
+      <NFTVault />
       </main>
 
-      {isLoggedIn ? (
-        <section id="nfts" className="py-24 relative animate-in fade-in duration-700">
-          <div className="bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-12 backdrop-blur-xl overflow-hidden relative">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-[10px] font-black uppercase tracking-widest mb-6">
-                  Exclusive Collection
-                </div>
-                <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-6">
-                  The <span className="text-orange-500">Billionaires</span> Club
-                </h2>
-                <div className="space-y-4">
-                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">Vault Unlocks In:</p>
-                  <CountdownTimer targetDate="2026-03-01T00:00:00" />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="aspect-square bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center">
-                    <Coins className="text-orange-500/20" size={32} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : (
-        /* LOCKED PLACEHOLDER */
-        <section id="nfts" className="py-24 text-center">
-          <div className="max-w-xl mx-auto p-12 bg-white/[0.02] border border-dashed border-white/20 rounded-[2.5rem]">
-            <Lock size={48} className="mx-auto mb-6 text-gray-600" />
-            <h3 className="text-2xl font-black italic uppercase mb-4 text-gray-400">NFT Vault Locked</h3>
-            <p className="text-gray-500 text-sm mb-8">Connect your Solana wallet to view the upcoming Billionaires Club collection.</p>
-            <button 
-              onClick={() => setShowAuthFlow(true)} 
-              className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold uppercase text-xs transition-all"
-            >
-              Connect to Unlock
-            </button>
-          </div>
-        </section>
-      )}
       {/* 6. FAQ SECTION */}
       <section id="faq" className="py-24 border-t border-white/5">
         <div className="max-w-3xl mx-auto">
