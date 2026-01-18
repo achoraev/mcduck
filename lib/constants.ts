@@ -20,7 +20,7 @@ export const ROADMAP = [
         { label: "Liquidity Locked", desc: "Permanent removal of LP tokens to ensure 100% rug-proof security." },
         { label: "Community Infiltration", desc: "Launch official Telegram and X (Twitter) hubs for the inner circle." }
       ], 
-      status: "Done" 
+      status: "Active" 
     },
     { 
       phase: "Phase 2", 
@@ -30,7 +30,7 @@ export const ROADMAP = [
         { label: "The Shilling Army", desc: "Collaborations with Top-tier Solana influencers and daily raiding contests." },
         { label: "CEX Listings", desc: "Application and integration with Tier-2 centralized exchanges (MEXC/Gate.io)." }
       ], 
-      status: "Active" 
+      status: "Future" 
     },
     { 
       phase: "Phase 3", 
