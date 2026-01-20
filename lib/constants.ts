@@ -3,6 +3,12 @@ import { Rocket, CheckCircle2 } from 'lucide-react';
 export const CONTRACT_ADDRESS = "Comming soon"; // change when start
 export const SYMBOL = "SOL"; // change when start
 
+export const SOCIAL_LINKS = {
+  twitter: "https://x.com/DigitalGold2026",
+  telegram: "https://t.me/digitalgold2026",
+  reddit: "https://reddit.com/user/DigitalGold2026",
+};
+
 export const TOKEN_DATA = [
   { name: 'Public Liquidity', value: 80, color: '#f97316' },
   { name: 'Marketing (Locked till Graduate)', value: 5, color: '#fbbf24' },

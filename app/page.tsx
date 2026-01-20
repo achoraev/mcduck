@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import React, { useState } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { 
   DynamicWidget, 
   DynamicContextProvider, 
@@ -23,6 +24,7 @@ import CountdownTimer from '@/components/CountdownTimer';
 import Navbar from '@/components/Navbar';
 import WhalesAI from '@/components/WhalesAI';
 import NFTVault from '@/components/NFTVault';
+import Socials from '@/components/Socials';
 
 function MainContent() {
   const isLoggedIn = useIsLoggedIn();
@@ -88,6 +90,8 @@ function MainContent() {
           </div>
         </header>
 
+        <Socials />
+        
         {/* BENTO GRID (Tokenomics & Gated Vault) */}
         <section id="tokenomics" className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-10 backdrop-blur-xl group relative">
@@ -190,7 +194,6 @@ function MainContent() {
       </section>
       <WhalesAI />
       <NFTVault />
-      </main>
 
       {/* 6. FAQ SECTION */}
       <section id="faq" className="py-24 border-t border-white/5">
@@ -215,7 +218,8 @@ function MainContent() {
           </div>
         </div>
       </section>
-      
+      </main>
+
       <footer className="py-20 border-t border-white/5 text-center text-gray-500 text-xs uppercase font-bold tracking-widest">
         © 2026 Scrooge McDuck • Built on Solana
       </footer>
