@@ -30,6 +30,8 @@ import Tokenomics from '@/components/Tokenomics';
 import Roadmap from '@/components/Roadmap';
 import Faq from '@/components/Faq';
 import Hero from '@/components/Hero';
+import TradingChart from '@/components/TradingChart'
+import LiveTransactions from '@/components/LiveTransactions';
 
 function MainContent() {
 
@@ -43,6 +45,9 @@ function MainContent() {
       <main className="max-w-7xl mx-auto px-6">
         <Hero />
         <Socials />
+        {/* <TradingChart /> chart is working will be start after launch */}
+        {/* Todo will implement later with real data */}
+        {/* <LiveTransactions /> */}
         <Tokenomics />
         <Roadmap />
         <WhalesAI />
