@@ -24,7 +24,6 @@ export default function Partners() {
         </p>
       </div>
 
-      {/* INFINITE SCROLL CONTAINER */}
       <div className="flex overflow-hidden select-none gap-12 mask-fade-edges">
         <div className="flex flex-nowrap shrink-0 items-center gap-16 animate-marquee">
           {/* First set of logos */}
