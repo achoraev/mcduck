@@ -18,9 +18,9 @@ export const TOKEN_DATA = [
 ];
 
 export const ROADMAP = [
-  { 
-    phase: "Phase 0", 
-    title: "Community Genesis", 
+  {
+    phase: "Phase 0",
+    title: "Community Genesis",
     status: "Active",
     items: [
       { label: "Viral Expansion", desc: "Aggressive growth on X, Telegram, and Reddit via community raids and meme contests." },
@@ -28,9 +28,9 @@ export const ROADMAP = [
       { label: "The Hype Engine", desc: "Establishing the 'Inner Circle' and onboarding early believers for the Fair Launch." }
     ]
   },
-  { 
-    phase: "Phase 1", 
-    title: "The Golden Vault", 
+  {
+    phase: "Phase 1",
+    title: "The Golden Vault",
     status: "Future",
     items: [
       { label: "Pump.fun Launch", desc: "Fair launch with no pre-allocation. Fighting through the bonding curve with organic volume." },
@@ -38,9 +38,9 @@ export const ROADMAP = [
       { label: "Trust Foundation", desc: "Automated migration to Raydium with permanent LP burning for 100% security." }
     ]
   },
-  { 
-    phase: "Phase 2", 
-    title: "Filling the Money Bin", 
+  {
+    phase: "Phase 2",
+    title: "Filling the Money Bin",
     status: "Future",
     items: [
       { label: "Raydium Domination", desc: "Post-graduation blitz: DEXScreener trending and high-frequency trading volume." },
@@ -48,10 +48,10 @@ export const ROADMAP = [
       { label: "Major Tracking", desc: "Verification on CoinGecko, CMC, and DEXTools to capture institutional 'Whale' interest." }
     ]
   },
-  { 
-    phase: "Phase 3", 
-    title: "Global Empire", 
-    status: "Future", 
+  {
+    phase: "Phase 3",
+    title: "Global Empire",
+    status: "Future",
     items: [
       { label: "Staking Protocol", desc: "Launch the 'High Security Vault' where holders earn passive token rewards." },
       { label: "McDuck DAO", desc: "Community governance for treasury management and strategic buybacks." },
@@ -61,6 +61,11 @@ export const ROADMAP = [
 ];
 
 export const FAQ_DATA = [
+
+  {
+    question: "How is the liquidity secured?",
+    answer: "We use the pump.fun protocol. Upon reaching our bonding curve target, $12k of liquidity is automatically migrated to Raydium and PERMANENTLY BURNED. The contract authorities are also hard-coded to null, making it 100% rug-proof."
+  },
   {
     question: "Is the liquidity locked?",
     answer: "Yes. 100% of the initial liquidity generated on Pump.fun is automatically locked and burned upon graduation to Raydium. This ensures the protocol is rug-proof."

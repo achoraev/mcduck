@@ -12,34 +12,67 @@ export function useTokenStats(address: string) {
   });
 
   useEffect(() => {
+    if (!address || address === "Coming soon") return;
+
     const fetchStats = async () => {
       try {
-        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${address}`);
-        const data = await response.json();
+        // 1. Try DexScreener first
+        const dexRes = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${address}`);
+        const dexData = await dexRes.json();
 
-        if (data.pairs && data.pairs[0]) {
-          const pair = data.pairs[0];
+        if (dexData.pairs && dexData.pairs.length > 0) {
+          const pair = dexData.pairs[0];
           setStats({
-            price: pair.priceUsd,
-            // fdv is "Fully Diluted Valuation", usually used for Market Cap on Pump.fun tokens
-            mcap: new Intl.NumberFormat('en-US', {
-              notation: "compact",
-              maximumFractionDigits: 1
-            }).format(pair.fdv),
-            change24h: pair.priceChange.h24,
+            price: parseFloat(pair.priceUsd).toFixed(8),
+            mcap: new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(pair.fdv || pair.marketCap),
+            change24h: pair.priceChange.h24 || 0,
             loading: false,
             error: false
           });
+          return;
+        }
+
+        // 2. Fallback to Helius DAS API
+        const heliusUrl = `https://mainnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`;
+        const response = await fetch(heliusUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: 'stats-fetch',
+            method: 'getAsset',
+            params: { 
+              id: address,
+              displayOptions: { showFungible: true } // REQUIRED for price data
+            }
+          }),
+        });
+        
+        const { result } = await response.json();
+
+        if (result?.token_info?.price_info) {
+          const price = result.token_info.price_info.price_per_token;
+          const totalCap = result.token_info.price_info.total_price || (price * 1000000000);
+
+          setStats({
+            price: price.toFixed(9),
+            mcap: new Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(totalCap),
+            change24h: 0,
+            loading: false,
+            error: false
+          });
+        } else {
+          // If token exists but has no price data yet (Brand New)
+          setStats(prev => ({ ...prev, mcap: "CALCULATING", loading: false }));
         }
       } catch (err) {
-        console.error("DexScreener fetch error:", err);
+        console.error("Fetch Error:", err);
         setStats(prev => ({ ...prev, loading: false, error: true }));
       }
     };
 
     fetchStats();
-    // Refresh every 60 seconds to stay updated without spamming
-    const interval = setInterval(fetchStats, 60000);
+    const interval = setInterval(fetchStats, 30000); 
     return () => clearInterval(interval);
   }, [address]);
 

@@ -4,6 +4,7 @@ import React from 'react';
 import { Zap, Repeat } from 'lucide-react';
 import { CONTRACT_ADDRESS } from '@/lib/constants';
 import { useSolanaTransactions } from '@/hooks/useSolanaTransactions';
+import LiveStats from './LiveStats';
 
 export default function LiveTransactions() {
   // HOOK IN REAL DATA
@@ -22,6 +23,7 @@ export default function LiveTransactions() {
         </span>
       </div>
 
+      <LiveStats />
       <div className="relative bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-6 backdrop-blur-md overflow-hidden">
         <div className="space-y-3 min-h-[200px]">
           {transactions.length === 0 ? (

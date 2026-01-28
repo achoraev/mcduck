@@ -33,6 +33,8 @@ import Hero from '@/components/Hero';
 import TradingChart from '@/components/TradingChart'
 import LiveTransactions from '@/components/LiveTransactions';
 import Partners from '@/components/Partners';
+import SecurityBadge from '@/components/SecurityBadge';
+import LiveStats from '@/components/LiveStats';
 
 function MainContent() {
 
@@ -45,11 +47,15 @@ function MainContent() {
 
       <main className="max-w-7xl mx-auto px-6">
         <Hero />
+        <div className="my-12">
+          <SecurityBadge />
+        </div>
         <Partners />
         <Socials />
         {/* <TradingChart /> chart is working will be start after launch */}
         {/* Todo will implement later with real data */}
         {/* <LiveTransactions /> */}
+        {/* <LiveStats /> */}
         <Tokenomics />
         <Roadmap />
         <WhalesAI />
