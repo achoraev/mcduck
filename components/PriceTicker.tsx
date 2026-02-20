@@ -5,9 +5,8 @@ import { useTokenStats } from '@/hooks/useTokenStats';
 import { CONTRACT_ADDRESS, SYMBOL } from '@/lib/constants';
 
 export default function PriceTicker() {
-//   const { price, mcap, change24h, loading } = useTokenStats(CONTRACT_ADDRESS);
-  const { price, mcap, change24h, loading } = useTokenStats("0x570A5D26f7765Ecb712C0924E4De545B89fD43dF");
-
+  const { price, mcap, change24h, loading } = useTokenStats(CONTRACT_ADDRESS);
+  // const { price, mcap, change24h, loading } = useTokenStats("0x570A5D26f7765Ecb712C0924E4De545B89fD43dF");
   // const { price, mcap, change24h, loading } = useTokenStats("FVVcwtS1qeh9PBqjKd2D1jgGkFfqoAX6SdaCepgZpump");
 
   if (loading) {

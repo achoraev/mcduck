@@ -1,7 +1,7 @@
 import { Rocket, CheckCircle2, Users, Globe, Flame, ShieldCheck, TrendingUp, Landmark } from 'lucide-react';
 
-export const CONTRACT_ADDRESS = "Coming soon"; // change when start
-export const SYMBOL = "SOL"; // change when start
+export const CONTRACT_ADDRESS = "6EMfu2VigQrQBcK5A6hQ8w53jgP5psGSaxDPRSSCpump"; // change when start
+export const SYMBOL = "SMCD"; // change when start
 
 export const SOCIAL_LINKS = {
   twitter: "https://x.com/DigitalGold2026",

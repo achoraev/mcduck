@@ -6,14 +6,13 @@ import { CONTRACT_ADDRESS } from '@/lib/constants';
 
 export default function SecurityBadge() {
   const rugCheckUrl = `https://rugcheck.xyz/tokens/${CONTRACT_ADDRESS}`;
-//   const bubbleMapsUrl = `https://app.bubblemaps.io/sol/token/${CONTRACT_ADDRESS}`;
-const bubbleMapsUrl = `https://v2.bubblemaps.io/map?address=FVVcwtS1qeh9PBqjKd2D1jgGkFfqoAX6SdaCepgZpump&chain=solana`;
-
+  // const bubbleMapsUrl = `https://app.bubblemaps.io/sol/token/${CONTRACT_ADDRESS}`;
+  const bubbleMapsUrl = `https://v2.bubblemaps.io/map?address=${CONTRACT_ADDRESS}=solana`;
 
   return (
     <section className="py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+
         {/* RUGCHECK CARD */}
         <div className="group relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
@@ -26,13 +25,13 @@ const bubbleMapsUrl = `https://v2.bubblemaps.io/map?address=FVVcwtS1qeh9PBqjKd2D
                 Contract Safe
               </span>
             </div>
-            
+
             <h4 className="text-2xl font-black uppercase italic text-white mb-2">RugCheck <span className="text-emerald-400">Verified</span></h4>
             <p className="text-gray-400 text-sm mb-8 leading-relaxed">
               Automated audit confirms no malicious functions. Mint authority is revoked and LP tokens are permanently burnt.
             </p>
 
-            <a 
+            <a
               href={rugCheckUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -55,13 +54,13 @@ const bubbleMapsUrl = `https://v2.bubblemaps.io/map?address=FVVcwtS1qeh9PBqjKd2D
                 Top Holders Map
               </span>
             </div>
-            
+
             <h4 className="text-2xl font-black uppercase italic text-white mb-2">Bubble<span className="text-purple-400">maps</span> Analysis</h4>
             <p className="text-gray-400 text-sm mb-8 leading-relaxed">
               Visualize the holder ecosystem. Our map proves there are no hidden clusters or massive insider-connected wallets.
             </p>
 
-            <a 
+            <a
               href={bubbleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"

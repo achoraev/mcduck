@@ -52,10 +52,10 @@ function MainContent() {
         </div>
         <Partners />
         <Socials />
-        {/* <TradingChart /> chart is working will be start after launch */}
+        <TradingChart />
         {/* Todo will implement later with real data */}
         {/* <LiveTransactions /> */}
-        {/* <LiveStats /> */}
+        <LiveStats />
         <Tokenomics />
         <Roadmap />
         <WhalesAI />

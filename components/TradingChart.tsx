@@ -8,8 +8,8 @@ export default function TradingChart() {
   // Replace this with your actual Pair Address if you have one, 
   // otherwise use the Token Address (DEX Screener handles both).
 
-  const contract = "45sspkuqs1ssbedqxd2mzrmdjyaxf7gyqyhs5xdxuwc5";
-  const chartUrl = `https://dexscreener.com/solana/${contract}?embed=1&theme=dark&trades=0&info=0`;
+  // const contract = "45sspkuqs1ssbedqxd2mzrmdjyaxf7gyqyhs5xdxuwc5";
+  const chartUrl = `https://dexscreener.com/solana/${CONTRACT_ADDRESS}?embed=1&theme=dark&trades=0&info=0`;
 
   return (
     <section id="chart" className="py-24">
@@ -24,7 +24,7 @@ export default function TradingChart() {
         </div>
         
         <a 
-          href={`https://dexscreener.com/solana/${contract}`} 
+          href={`https://dexscreener.com/solana/${CONTRACT_ADDRESS}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-[10px] font-black uppercase text-gray-500 hover:text-orange-500 transition-colors border-b border-white/10 pb-2 italic"
